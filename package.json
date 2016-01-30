@@ -1,0 +1,27 @@
+{
+  "name": "SoloAlong",
+  "version": "0.1.0",
+  "description": "A rad app to make chord progressions you can shred to",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/**/test*.js"
+  },
+  "keywords": ["music", "chords", "solo", "guitar"],
+  "author": "Yueyue Qin, Gene Troy, Aaron Filson, Cameron Forras, James Vermillion",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.6"
+  },
+  "devDependencies": {
+    "bcrypt": "^0.8.5",
+    "chai": "^3.4.1",
+    "chai-http": "^1.0.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-mocha": "^2.2.0",
+    "jsonwebtoken": "^5.5.4",
+    "mocha": "^2.3.4"
+  }
+}
