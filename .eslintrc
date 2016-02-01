@@ -95,7 +95,7 @@
     "wrap-iife": [2, "any"],
     "yoda": 1,
 
-    //"strict": [2, "global"],
+    "strict": 0,
 
     "no-catch-shadow": 2,
     "no-delete-var": 2,

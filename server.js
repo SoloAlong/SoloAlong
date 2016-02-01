@@ -14,7 +14,7 @@ var Message = mongoose.model('Message', new mongoose.Schema({
 app.post('/api/message', jsonParser, (req, res) => {
   var msg = new Message(req.body);
   msg.save((err, data) => {
-    if (err) return res.status(500).json({msg: 'server err'});
+    if (err) return res.status(500).json({ msg: 'server err' });
 
     res.json(msg);
   });
