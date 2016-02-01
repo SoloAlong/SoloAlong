@@ -30,10 +30,10 @@ soloRouter.get('/', (req, res) => {
 soloRouter.post('/newCP', jwtAuth, jsonParser, (req, res) => {
   var newCP = new CPmodel(req.body);
   newCP.userid = req.user._id;
-  newCP.save(err, newCPinfo) => {
+  newCP.save((err, newCPinfo) => {
     if (err) {return handleDBError(err, res);} //check for bad save
     res.status(200).json(newCPinfo);
-  };
+  });
 });
 
 //ROUTE 4: GETS PROFILE INFO FROM DB
