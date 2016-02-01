@@ -114,7 +114,7 @@
     "no-path-concat": 0,
     "no-process-exit": 2,
     "no-restricted-modules": 0,
-    "no-sync": 1,
+    "no-sync": 0,
 
     "brace-style": [
       2,
