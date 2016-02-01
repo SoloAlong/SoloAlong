@@ -20,8 +20,8 @@ const eChordNames =
     'a♭ minor',
     'A major',
     'B major',
-    'C♯ major',
-    'd♯ diminished'
+    'd♭ minor',
+    'e♭ diminished'
   ];
 
 // test input key validation and transfer to index of master scale
