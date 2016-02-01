@@ -1,7 +1,7 @@
 const express = require('express');
 const app = module.exports = exports = express();
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/_dev');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/soloDev');
 
 const s_router = require(__dirname + '/routes/router');
 const authRouter = require(__dirname + '/routes/auth_router');
