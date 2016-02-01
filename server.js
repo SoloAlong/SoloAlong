@@ -20,8 +20,10 @@ app.post('/api/message', jsonParser, (req, res) => {
   });
 });
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/index.html');
+  var index = fs.createReadStream(__dirname + '/public/index.html');
   index.pipe(res);
 });
 
@@ -34,6 +36,8 @@ app.get('/home', (req, res) => {
   var index = fs.createReadStream(__dirname + '/index.html');
   index.pipe(res);
 });
+
+
 
 const s_router = require(__dirname + '/routes/router');
 const authRouter = require(__dirname + '/routes/auth_router');
