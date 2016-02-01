@@ -4,7 +4,7 @@ const jsonParser = require('body-parser').json();
 const handleDBError = require(__dirname + '/../lib/handleDBError');
 const basicHTTP = require(__dirname + '/../lib/basic_http');
 const User = require(__dirname + '/../models/user');
-const CPmodel = require(__dirname + '/../models/CPmodel');
+const CPmodel = require(__dirname + '/../models/cp');
 const jwtAuth = require(__dirname + '/../lib/jwt_auth');
 
 var soloRouter = module.exports = exports = express.Router();
