@@ -50,23 +50,19 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
         return handleDBError(err, res);
       }
 
-      // for (var i = 0; i < chords.length; i += 1) {
-      //   var chord = {};
-      //   chord.name = theta[i].name;
-      //   chord.chord1 = dictionary[theta[i].chords[0]];
-      //   chord.chord2 = dictionary[theta[i].chords[1]];
-      //   chord.chord3 = dictionary[theta[i].chords[2]];
-      //   chord.chord4 = dictionary[theta[i].chords[3]];
-      // }
+      chordArray = [];
 
-      var chordObj = {};
-      chordObj.name = chords[1].name;
-      chordObj.chord1 = dictionary[chords[1].chords[0]];
-      chordObj.chord2 = dictionary[chords[1].chords[1]];
-      chordObj.chord3 = dictionary[chords[1].chords[2]];
-      chordObj.chord4 = dictionary[chords[1].chords[3]];
+      for (var i = 0; i < chords.length; i += 1) {
+        var chord = {};
+        chord.name = chords[i].name;
+        chord.chord1 = dictionary[chords[i].chords[0]];
+        chord.chord2 = dictionary[chords[i].chords[1]];
+        chord.chord3 = dictionary[chords[i].chords[2]];
+        chord.chord4 = dictionary[chords[i].chords[3]];
+        chordArray.push(chord);
+      }
 
-      return res.status(200).json(chordObj);
+      return res.status(200).json(chordArray);
     });
   });
 });

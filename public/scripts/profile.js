@@ -8,20 +8,11 @@ $(function() {
       },
       dataType: 'json',
       success: function(theta) {
-        // for (var i = 0; i < theta.length; i += 1) {
-        //   var chord = {};
-        //   chord.name = theta[i].name;
-        //   chord.chord1 = dictionary[theta[i].chords[0]];
-        //   chord.chord2 = dictionary[theta[i].chords[1]];
-        //   chord.chord3 = dictionary[theta[i].chords[2]];
-        //   chord.chord4 = dictionary[theta[i].chords[3]];
-        //
-        //   var html = template(chord);
-        //   $('#chords').append(html);
-        // }
-
-        var html = template(theta);
-        $('#chords').append(html);
+        console.log(theta);
+        for (var i = 0; i < theta.length; i += 1) {
+          var html = template(theta[i]);
+          $('#chords').append(html);
+        }
 
       },
       error: function() { console.log('Device control failed'); },
