@@ -35,21 +35,22 @@ soloRouter.post('/newCP', jwtAuth, jsonParser, (req, res) => {
   });
 });
 
+
 //ROUTE 4: GETS PROFILE INFO FROM DB
 // used AFTER sign-up/sign-in
 // validates token and returns profile info to profile.js
 soloRouter.get('/profile', jwtAuth, (req, res) => {
-  CPmodel.find({user: req.user.id}, (err, data1) => {
+  CPmodel.find({userid: req.user.id}, (err, data1) => {
     if (err) {
       return handleDBError(err, res);
     }
-    var myCP = data1;
-    User.find({user:req.user.id}, (err, data2) => {
+    var myChordProgression = data1[0].chords;
+    User.find({_id:req.user.id}, (err, data2) => {
       if (err) {
         return handleDBError(err, res);
       }
       console.log(data2);
-      return res.status(200).json(data2 + data1);//this needs work
+      return res.status(200).json(myChordProgression);//this needs work
     });
   });
 });
