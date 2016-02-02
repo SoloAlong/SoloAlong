@@ -37,6 +37,6 @@ authRouter.get('/signin', basicHTTP, (req, res) => {
 
     if (!user.comparePassword(req.basicHTTP.password)) return res.status(401).json( { msg: 'incorrect password' } );
 
-    res.json( { msg: 'Success in signup' } );
+    res.json( { msg: 'Success in signin' } );
   });
 });
