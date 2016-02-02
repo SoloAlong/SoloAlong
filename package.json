@@ -4,6 +4,7 @@
   "description": "A rad app to make chord progressions you can shred to",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "./node_modules/mocha/bin/mocha test/**/test*.js"
   },
   "keywords": [
