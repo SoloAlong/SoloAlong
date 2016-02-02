@@ -30,17 +30,14 @@ $('#login-submit').click(() => {
   var headauth = email1 + ':' + password1;
   console.log(headauth);
   var headauthbase64 = window.btoa(headauth);
-  // var usernamebase64 = window.btoa(username1);
-  // var colonbase64 = window.btoa(':');
-  // var passwordbase64 = window.btoa(password1);
-  // var headauth = usernamebase64 + colonbase64 + passwordbase64;
-  // console.log(headauth);
-  // console.log(window.atob(headauth));
 
   $.ajax({
   headers: { 'Authorization': 'Basic ' + headauthbase64 },
   success: function(data) { console.log(data.msg); $('#response').text(data.msg);},
-  error: function(data) { console.log(data); },
+  error: function(data) {
+     var msg = JSON.parse(data.responseText).msg;
+     $('#response').text(msg);
+  },
   processData: false,
   type: 'GET',
   url: '/signin'
