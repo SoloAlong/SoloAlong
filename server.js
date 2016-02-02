@@ -38,7 +38,7 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/profiles', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/profile.html');
+  var index = fs.createReadStream(__dirname + '/public/profile.html');
   index.pipe(res);
 });
 

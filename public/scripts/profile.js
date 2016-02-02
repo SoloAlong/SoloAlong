@@ -19,8 +19,7 @@ $(function() {
         //   var html = template(chord);
         //   $('#chords').append(html);
         // }
-        theta.chord1.image = theta.chord1.image.replace('"', ' ');
-        console.log(theta.chord1.image);
+
         var html = template(theta);
         $('#chords').append(html);
 
