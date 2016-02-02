@@ -9,13 +9,12 @@ const jwtAuth = require(__dirname + '/../lib/jwt_auth');
 
 var soloRouter = module.exports = exports = express.Router();
 
-//ROUTE 0
+//ROUTE 0: index.js
+// to be handled in server
 // validates root note, key/orientation
 // gets notes and name of each chord
 // shouts out the available chords
-soloRouter.get('/', (req, res) => {
-  fs.readStream('index.html').pipe(res);
-});
+
 //ROUTE 1: SIGN UP
 // to be handled in Auth Router
 // validates email/pw, creates User
@@ -36,24 +35,21 @@ soloRouter.post('/newCP', jwtAuth, jsonParser, (req, res) => {
   });
 });
 
-//superagent localhost:3000/profile get -H "token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2YWZmMGIwNWEyM2Y3Y2U3MGZiMGRjZCIsImlhdCI6MTQ1NDM3MTExNn0.WeZyK7I0yJ87S2LH8FGpp15abV5duMepXQnRlBEixRs"
-
 //ROUTE 4: GETS PROFILE INFO FROM DB
 // used AFTER sign-up/sign-in
 // validates token and returns profile info to profile.js
 soloRouter.get('/profile', jwtAuth, (req, res) => {
-  CPmodel.find({user: req.userid._id}, (err, data) => {
+  CPmodel.find({user: req.user.id}, (err, data1) => {
     if (err) {
       return handleDBError(err, res);
     }
-    if (!userCP) {
-      return res.end();
-    }
-    res.status(200).json(data);
-
+    var myCP = data1;
+    User.find({user:req.user.id}, (err, data2) => {
+      if (err) {
+        return handleDBError(err, res);
+      }
+      console.log(data2);
+      return res.status(200).json(data2 + data1);//this needs work
+    });
   });
-});
-
-soloRouter.get('/profile.js', (req, res) => {
-  fs.readStream('profile.js').pipe(res);
 });
