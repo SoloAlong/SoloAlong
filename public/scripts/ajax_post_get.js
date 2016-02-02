@@ -12,7 +12,7 @@ $('#register-submit').click(() => {
     email: $('#email').val(),
     username: $('#username').val(),
     password: $('#password').val(),
-    comfrimpassword: $('#confirmpassword').val()
+    confirmpassword: $('#confirmpassword').val()
   };
   $.ajax({ contentType: 'application/json',
   data: JSON.stringify(signup),
@@ -32,7 +32,7 @@ $('#register-submit').click(() => {
 
   if (!((signup.password || '').length > 7)) return $('#response').text('Please enter password of length more than 7');
 
-  if (!(signup.password === signup.comfirmpassword)) return $('#response').text('Passwords are not same');
+  if (!(signup.password === signup.confirmpassword)) return $('#response').text('Passwords are not same');
   if (true) return $('#response').text('success!');
 
 
