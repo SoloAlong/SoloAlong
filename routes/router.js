@@ -6,6 +6,7 @@ const basicHTTP = require(__dirname + '/../lib/basic_http');
 const User = require(__dirname + '/../models/user');
 const CPmodel = require(__dirname + '/../models/cp');
 const jwtAuth = require(__dirname + '/../lib/jwt_auth');
+const dictionary = require(__dirname + '/../lib/logic/chords');
 
 var soloRouter = module.exports = exports = express.Router();
 
@@ -39,17 +40,33 @@ soloRouter.post('/newCP', jwtAuth, jsonParser, (req, res) => {
 // used AFTER sign-up/sign-in
 // validates token and returns profile info to profile.js
 soloRouter.get('/profile', jwtAuth, (req, res) => {
-  CPmodel.find({user: req.user.id}, (err, data1) => {
+  CPmodel.find({userid: req.user.id}, (err, chords) => {
     if (err) {
       return handleDBError(err, res);
     }
-    var myCP = data1;
-    User.find({user:req.user.id}, (err, data2) => {
+
+    User.find({_id: req.user.id}, (err, user) => {
       if (err) {
         return handleDBError(err, res);
       }
-      console.log(data2);
-      return res.status(200).json(data2 + data1);//this needs work
+
+      // for (var i = 0; i < chords.length; i += 1) {
+      //   var chord = {};
+      //   chord.name = theta[i].name;
+      //   chord.chord1 = dictionary[theta[i].chords[0]];
+      //   chord.chord2 = dictionary[theta[i].chords[1]];
+      //   chord.chord3 = dictionary[theta[i].chords[2]];
+      //   chord.chord4 = dictionary[theta[i].chords[3]];
+      // }
+
+      var chordObj = {};
+      chordObj.name = chords[1].name;
+      chordObj.chord1 = dictionary[chords[1].chords[0]];
+      chordObj.chord2 = dictionary[chords[1].chords[1]];
+      chordObj.chord3 = dictionary[chords[1].chords[2]];
+      chordObj.chord4 = dictionary[chords[1].chords[3]];
+
+      return res.status(200).json(chordObj);
     });
   });
 });
