@@ -12,7 +12,7 @@ authRouter.post('/signup', jsonParser, (req, res) => {
 
   if (!(req.body.email || '').length && !emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter an email' } );
 
-  if(!emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter a valid email' } );
+  if (!emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter a valid email' } );
 
   if (!(req.body.username || '').length) return res.status(200).json( { msg: 'Please enter a user name' } );
 
@@ -27,15 +27,16 @@ authRouter.post('/signup', jsonParser, (req, res) => {
   });
 });
 
-authRouter.post('/signin', basicHTTP, (req, res) => {
+authRouter.get('/signin', basicHTTP, (req, res) => {
 
   User.findOne( { 'authentication.email': req.basicHTTP.email }, (err, user) => {
+    console.log(user);
     if (err) return handleDBError(err, res);
 
-    if (!user) return res.status(401).json( { msg: 'no user exists ' } );
+    if (!user) return res.status(401).json( { msg: 'no user exists' } );
 
     if (!user.comparePassword(req.basicHTTP.password)) return res.status(401).json( { msg: 'incorrect password' } );
 
-    res.json( { token: user.generateToken() } );
+    res.json( { msg: 'Success in signup' } );
   });
 });
