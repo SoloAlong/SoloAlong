@@ -17,23 +17,10 @@ $('#register-submit').click(() => {
   $.ajax({ contentType: 'application/json',
   data: JSON.stringify(signup),
   dataType: 'json',
-  success: function() { console.log('device control succeeded'); },
-  error: function() { console.log('Device control failed'); },
+  success: function(data) { console.log(data.msg); $('#response').text(data.msg);},
+  error: function(data) { console.log(data); },
   processData: false,
   type: 'POST',
   url: '/signup'
   });
-
-  if (!(signup.email || '').length) return $('#response').text('Please enter a email');
-
-  if (!emailValidation(signup.email)) return $('#response').text('Please enter a valid email');
-
-  if (!(signup.username || '').length) return $('#response').text('Please enter a user name');
-
-  if (!((signup.password || '').length > 7)) return $('#response').text('Please enter password of length more than 7');
-
-  if (!(signup.password === signup.confirmpassword)) return $('#response').text('Passwords are not same');
-  if (true) return $('#response').text('success!');
-
-
 });

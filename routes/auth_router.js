@@ -10,18 +10,19 @@ var authRouter = module.exports = exports = express.Router();
 
 authRouter.post('/signup', jsonParser, (req, res) => {
 
-  if (!(req.body.email || '').length && !emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter a email' } );
+  if (!(req.body.email || '').length && !emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter an email' } );
 
   if(!emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter a valid email' } );
 
   if (!(req.body.username || '').length) return res.status(200).json( { msg: 'Please enter a user name' } );
 
-  if (!((req.body.password || '').length > 7)) return res.status(200).json( { msg: 'Please enter password of length more than 7' } );
+  if (!((req.body.password || '').length > 7)) return res.status(200).json( { msg: 'Please enter a password longer than 7 characters' } );
 
+  if (!(req.body.password === req.body.confirmpassword)) return res.status(200).json( { msg: 'Passwords are not the same' } );
 
   User.find({ $or: [ { 'username': req.body.username }, { 'email': req.body.email } ] }, (err, data) => {
     if (err) return handleDBError(err, res);
-    if (data.length) return res.status(200).json( { msg: 'user already exist; please sign in this site' } );
+    if (data.length) return res.status(200).json( { msg: 'User already exists! Please use a different username' } );
     saveUserDB(req, res);
   });
 });
@@ -31,7 +32,7 @@ authRouter.post('/signin', basicHTTP, (req, res) => {
   User.findOne( { 'authentication.email': req.basicHTTP.email }, (err, user) => {
     if (err) return handleDBError(err, res);
 
-    if (!user) return res.status(401).json( { msg: 'no user exist ' } );
+    if (!user) return res.status(401).json( { msg: 'no user exists ' } );
 
     if (!user.comparePassword(req.basicHTTP.password)) return res.status(401).json( { msg: 'incorrect password' } );
 
