@@ -1,8 +1,3 @@
-function emailValidation(email) {
-  var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
-}
-
 $('#register-submit').click(() => {
   console.log($('#email').val());
   console.log($('#username').val());
@@ -17,23 +12,34 @@ $('#register-submit').click(() => {
   $.ajax({ contentType: 'application/json',
   data: JSON.stringify(signup),
   dataType: 'json',
-  success: function() { console.log('device control succeeded'); },
-  error: function() { console.log('Device control failed'); },
+  success: function(data) { console.log(data.msg); $('#response').text(data.msg);},
+  error: function(data) { console.log(data); },
   processData: false,
   type: 'POST',
   url: '/signup'
   });
+});
 
-  if (!(signup.email || '').length) return $('#response').text('Please enter a email');
+$('#login-submit').click(() => {
+  console.log($('#email1').val());
+  console.log($('#password1').val());
+  var email1 = $('#email1').val();
+  var password1 = $('#password1').val();
+  console.log(typeof email1);
+  console.log(password1);
+  var headauth = email1 + ':' + password1;
+  console.log(headauth);
+  var headauthbase64 = window.btoa(headauth);
 
-  if (!emailValidation(signup.email)) return $('#response').text('Please enter a valid email');
-
-  if (!(signup.username || '').length) return $('#response').text('Please enter a user name');
-
-  if (!((signup.password || '').length > 7)) return $('#response').text('Please enter password of length more than 7');
-
-  if (!(signup.password === signup.confirmpassword)) return $('#response').text('Passwords are not same');
-  if (true) return $('#response').text('success!');
-
-
+  $.ajax({
+  headers: { 'Authorization': 'Basic ' + headauthbase64 },
+  success: function(data) { console.log(data.msg); $('#response').text(data.msg);},
+  error: function(data) {
+     var msg = JSON.parse(data.responseText).msg;
+     $('#response').text(msg);
+  },
+  processData: false,
+  type: 'GET',
+  url: '/signin'
+  });
 });

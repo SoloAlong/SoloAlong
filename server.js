@@ -42,8 +42,6 @@ app.get('/profiles', (req, res) => {
   index.pipe(res);
 });
 
-
-
 const s_router = require(__dirname + '/routes/router');
 const authRouter = require(__dirname + '/routes/auth_router');
 
