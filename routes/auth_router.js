@@ -5,23 +5,28 @@ const handleDBError = require(__dirname + '/../lib/handleDBError');
 const basicHTTP = require(__dirname + '/../lib/basic_http');
 const saveUserDB = require(__dirname + '/../lib/save_new_user');
 const emailValidation = require(__dirname + '/../lib/email_validation.js');
+const jsdom = require('jsdom');
+const $ = require('jquery')(require("jsdom").jsdom().parentWindow);
 
 var authRouter = module.exports = exports = express.Router();
 
 authRouter.post('/signup', jsonParser, (req, res) => {
 
-  if (!(req.body.email || '').length && !emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter a email' } );
+  if (!(req.body.email || '').length) return res.status(200).json( { msg: 'Please enter a email' } );
 
-  if(!emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter a valid email' } );
+  if (!emailValidation(req.body.email)) return res.status(200).json( { msg: 'Please enter a valid email' } );
 
   if (!(req.body.username || '').length) return res.status(200).json( { msg: 'Please enter a user name' } );
 
   if (!((req.body.password || '').length > 7)) return res.status(200).json( { msg: 'Please enter password of length more than 7' } );
 
-
   User.find({ $or: [ { 'username': req.body.username }, { 'email': req.body.email } ] }, (err, data) => {
     if (err) return handleDBError(err, res);
-    if (data.length) return res.status(200).json( { msg: 'user already exist; please sign in this site' } );
+    if (data.length) {
+        console.log(data.length);
+      res.status(200).json( { msg: 'user already exist; please sign in this site' } );
+      return $('#response').text('user already exist; please sign in this site');
+    }
     saveUserDB(req, res);
   });
 });
