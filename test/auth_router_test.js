@@ -22,7 +22,7 @@ describe('User Authentication: ', () => {
         .end((err, res) => {
           expect(err).to.eql(null);
           expect(res).to.have.status(200);
-          expect(res.body.msg).to.eql('Please enter a email');
+          expect(res.body.msg).to.eql('Please enter an email');
           done();
         });
     });
@@ -51,7 +51,7 @@ describe('User Authentication: ', () => {
         });
     });
 
-    it('should be able to remind user to enter a password if its length is less than 7', (done) => {
+    it('should be able to remind user to enter a password if its length is less than 7 characters', (done) => {
       var invalidUser = { email: 'newuser1@gmail.com', username: 'newuser1', password: '123456' };
       chai.request(origin)
         .post('/signup')
@@ -59,34 +59,34 @@ describe('User Authentication: ', () => {
         .end((err, res) => {
           expect(err).to.eql(null);
           expect(res).to.have.status(200);
-          expect(res.body.msg).to.eql('Please enter password of length more than 7');
+          expect(res.body.msg).to.eql('Please enter a password longer than 7 characters');
           done();
         });
     });
 
     it('it should be able to create a new  user', (done) => {
-      var newUser = { email: 'newuser@gmail.com', username: 'newuser', password: '12345678' };
+      var newUser = { email: 'newuser@gmail.com', username: 'newuser', password: '12345678', confirmpassword: '12345678' };
       chai.request(origin)
         .post('/signup')
         .send(newUser)
         .end((err, res) => {
           expect(err).to.eql(null);
           expect(res).to.have.a.status(200);
-          expect(res.body).to.have.property('token');
+          expect(res.body.msg).to.eql('Success in signup!');
           this.token = res.body;
           done();
         });
     });
 
     it('should be able to check whether the user already exist for signup', (done) => {
-      var sameUser = { email: 'newuser@gmail.com', username: 'newuser', password: '12345678' };
+      var sameUser = { email: 'newuser@gmail.com', username: 'newuser', password: '12345678', confirmpassword: '12345678' };
       chai.request(origin)
         .post('/signup')
         .send(sameUser)
         .end((err, res) => {
           expect(err).to.eql(null);
           expect(res).to.have.status(200);
-          expect(res.body.msg).to.eql('user already exist; please sign in this site');
+          expect(res.body.msg).to.eql('User already exists! Please use a different username');
           done();
         });
     });
