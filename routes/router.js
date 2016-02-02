@@ -36,11 +36,13 @@ soloRouter.post('/newCP', jwtAuth, jsonParser, (req, res) => {
   });
 });
 
+superagent localhost:3000/profile get -H "token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2YWZmMGIwNWEyM2Y3Y2U3MGZiMGRjZCIsImlhdCI6MTQ1NDM3MTExNn0.WeZyK7I0yJ87S2LH8FGpp15abV5duMepXQnRlBEixRs"
+
 //ROUTE 4: GETS PROFILE INFO FROM DB
 // used AFTER sign-up/sign-in
 // validates token and returns profile info to profile.js
 soloRouter.get('/profile', jwtAuth, (req, res) => {
-  CPmodel.find({user: req.user._id}, (err, data) => {
+  CPmodel.find({user: req.userid._id}, (err, data) => {
     if (err) {
       return handleDBError(err, res);
     }
