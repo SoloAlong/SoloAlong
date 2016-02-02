@@ -6,7 +6,7 @@ const basicHTTP = require(__dirname + '/../lib/basic_http');
 const User = require(__dirname + '/../models/user');
 const CPmodel = require(__dirname + '/../models/cp');
 const jwtAuth = require(__dirname + '/../lib/jwt_auth');
-const dictionary = require(__dirname + '/../lib/logic/chords');
+const dictionary = require(__dirname + '/../public/scripts/chords');
 
 var soloRouter = module.exports = exports = express.Router();
 
