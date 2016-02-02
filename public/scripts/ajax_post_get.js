@@ -24,12 +24,3 @@ $('#register-submit').click(() => {
   url: '/signup'
   });
 });
-
-$('#login-submit').click(() => {
-  var signIn = {
-    username: $('#username1').val(),
-    password: $('#password1').val()
-  };
-  $.ajax({ contentType: 'application/json',
-  data: JSON.toString(signIn)})
-}
