@@ -37,6 +37,11 @@ app.get('/home', (req, res) => {
   index.pipe(res);
 });
 
+app.get('/profiles', (req, res) => {
+  var index = fs.createReadStream(__dirname + '/public/profile.html');
+  index.pipe(res);
+});
+
 
 
 const s_router = require(__dirname + '/routes/router');
