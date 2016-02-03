@@ -41,16 +41,16 @@ soloRouter.post('/newCP', jwtAuth, jsonParser, (req, res) => {
 // used AFTER sign-up/sign-in
 // validates token and returns profile info to profile.js
 soloRouter.get('/profile', jwtAuth, (req, res) => {
-  CPmodel.find({userid: req.user.id}, (err, chords) => {
+  CPmodel.find( { userid: req.user.id }, (err, chords) => {
     if (err) {
       return handleDBError(err, res);
     }
 
-    User.find({_id: req.user.id}, (err, user) => {
+    User.find( { _id: req.user.id }, (err, user) => {
       if (err) {
         return handleDBError(err, res);
       }
-      chordArray = [];
+      var chordArray = [];
 
       for (var i = 0; i < chords.length; i += 1) {
         var chord = {};
@@ -62,15 +62,12 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
         chordArray.push(chord);
       }
 
-      return res.status(200).json(chordArray);
+      console.log(chordArray);
+
+      return res.status(200).json( { chord: chordArray, userinfo: user } );
     });
   });
 });
-
-// soloRouter.get('/chordsInKey', (req, res) => {
-//   var index = fs.createReadStream(__dirname + '/public/chordsInKey.html');
-//   index.pipe(res);
-// });
 
 soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
   var k = req.headers.key;
