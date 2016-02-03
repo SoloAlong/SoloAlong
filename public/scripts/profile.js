@@ -7,6 +7,9 @@ $(function() {
         token: $.cookie('token')
       },
       dataType: 'json',
+      processData: false,
+      type: 'GET',
+      url: '/profile',
       success: function(theta) {
         console.log(theta);
         for (var i = 0; i < theta.length; i += 1) {
@@ -14,10 +17,8 @@ $(function() {
           $('#chords').append(html);
         }
       },
-      error: function() { console.log('Device control failed'); },
-      processData: false,
-      type: 'GET',
-      url: '/profile'
+      error: function() { console.log('Device control failed'); }
+      
     });
   });
 });
