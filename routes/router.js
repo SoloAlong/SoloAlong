@@ -49,7 +49,6 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
       if (err) {
         return handleDBError(err, res);
       }
-
       chordArray = [];
 
       for (var i = 0; i < chords.length; i += 1) {

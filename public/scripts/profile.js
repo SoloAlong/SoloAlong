@@ -13,7 +13,6 @@ $(function() {
           var html = template(theta[i]);
           $('#chords').append(html);
         }
-
       },
       error: function() { console.log('Device control failed'); },
       processData: false,
