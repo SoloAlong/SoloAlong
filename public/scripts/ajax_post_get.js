@@ -33,7 +33,13 @@ $('#login-submit').click(() => {
 
   $.ajax({
   headers: { 'Authorization': 'Basic ' + headauthbase64 },
-  success: function(data) { console.log(data.msg); $('#response').text(data.msg);},
+  success: function(data) {
+    console.log(data);
+    console.log(data.msg);
+    $('#response').text(data.msg);
+    var token = 'token';
+    $.cookie(token, data.token);
+  },
   error: function(data) {
      var msg = JSON.parse(data.responseText).msg;
      $('#response').text(msg);
