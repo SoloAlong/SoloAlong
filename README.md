@@ -3,7 +3,7 @@ A rad app to make chord progressions you can shred to!
 
 ## Create a user!
 Signing up is easy and secure! Just enter a username, your email, and the password you
-would like to use and that's it!  If your username or email is already take, you'll 
+would like to use and that's it!  If your username or email is already taken, you'll 
 need to use another username or email...hey, thems the breaks, man.
 
 ## Sign in!
@@ -12,9 +12,9 @@ and password -- If it's right, you'll be logged in and whisked away to your prof
 where you'll see all of your amazing chord progressions!
 
 ## Create a new Chord Progression!
-Just pick the key you'd like, and if you'd like the key to be 'Major' or "minor" to 
-see your available chords!  Drop whatever chords you'd like into place and when you're 
-ready, hit the button and the new chord progression will be added to your collection!
+Just pick the key you'd like, and if you'd like the key to be "Major" or "minor" to 
+see your available chords!  Drop whatever chords you'd like into place, and when you're 
+ready, hit the button! The new chord progression will be added to your collection!
 It's that easy!
 
 ## Play a chord progression and SHRED IT UP!
