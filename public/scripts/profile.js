@@ -17,10 +17,7 @@ $(() => {
         var user = template(userinfo);
         $('#userinfo').append(user);
       },
-      error: function(data) { console.log(data); },
-      processData: false,
-      type: 'GET',
-      url: '/profile'
+      error: function(data) { console.log(data); }
     });
   });
   $.get('/../template.html', (data) => {
