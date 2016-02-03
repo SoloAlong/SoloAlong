@@ -1,5 +1,5 @@
-$(function() {
-  $.get('/../template.html', function(data) {
+$(() => {
+  $.get('/../user_template.html', (data) => {
     var template = Handlebars.compile(data);
     $.ajax({
       contentType: 'application/json',
@@ -12,13 +12,37 @@ $(function() {
       url: '/profile',
       success: function(theta) {
         console.log(theta);
-        for (var i = 0; i < theta.length; i += 1) {
-          var html = template(theta[i]);
-          $('#chords').append(html);
+        var userinfo = theta.userinfo[0];
+        console.log(userinfo);
+        var user = template(userinfo);
+        $('#userinfo').append(user);
+      },
+      error: function(data) { console.log(data); },
+      processData: false,
+      type: 'GET',
+      url: '/profile'
+    });
+  });
+  $.get('/../template.html', (data) => {
+    var template = Handlebars.compile(data);
+    $.ajax({
+      contentType: 'application/json',
+      headers: {
+        token: $.cookie('token')
+      },
+      dataType: 'json',
+      success: function(theta) {
+        console.log(theta);
+        var chord = theta.chord;
+        for (var i = 0; i < chord.length; i += 1) {
+          var chordm = template(chord[i]);
+          $('#chords').append(chordm);
         }
       },
-      error: function() { console.log('Device control failed'); }
-      
+      error: function(data) { console.log(data); },
+      processData: false,
+      type: 'GET',
+      url: '/profile'
     });
   });
 });
