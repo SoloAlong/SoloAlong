@@ -39,10 +39,13 @@ $('#login-submit').click(() => {
     $('#response').text(data.msg);
     var token = 'token';
     $.cookie(token, data.token);
+    window.location.href = "/profiles";
   },
   error: function(data) {
      var msg = JSON.parse(data.responseText).msg;
      $('#response').text(msg);
+     var token = 'token';
+    $.cookie(token, "");
   },
   processData: false,
   type: 'GET',

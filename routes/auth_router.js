@@ -30,8 +30,8 @@ authRouter.post('/signup', jsonParser, (req, res) => {
 authRouter.get('/signin', basicHTTP, (req, res) => {
 
   User.findOne( { 'authentication.email': req.basicHTTP.email }, (err, user) => {
-    console.log(user);
-    console.log(user.generateToken());
+    // console.log(user);
+    // console.log(user.generateToken());
     if (err) return handleDBError(err, res);
 
     if (!user) return res.status(401).json( { msg: 'no user exists' } );
