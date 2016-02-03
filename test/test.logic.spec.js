@@ -15,11 +15,11 @@ const eChordNotes = [
     [ 'e♭', 'g♭', 'a' ]
   ];
 const eChordNames =
-  [ 'E major',
+  [ 'e major',
     'g♭ minor',
     'a♭ minor',
-    'A major',
-    'B major',
+    'a major',
+    'b major',
     'd♭ minor',
     'e♭ diminished'
   ];

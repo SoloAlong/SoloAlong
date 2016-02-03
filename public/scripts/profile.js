@@ -7,6 +7,9 @@ $(() => {
         token: $.cookie('token')
       },
       dataType: 'json',
+      processData: false,
+      type: 'GET',
+      url: '/profile',
       success: function(theta) {
         console.log(theta);
         var userinfo = theta.userinfo[0];
