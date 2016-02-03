@@ -3,7 +3,7 @@ $(function() {
   var orientation;
   var playing;
   function dropChange(){
-    key = $('#letter').val(); 
+    key = $('#letter').val();
     orientation = $('#orientation').val();
     $.get('/../template_chordsInKey.html', function(data) {
       var template = Handlebars.compile(data);
@@ -22,6 +22,16 @@ $(function() {
           var html = template(theta);
           $('#chords').empty();
           $('#chords').append(html);
+          $( '.drag' ).draggable({
+            revert: 'invalid',
+            helper: 'clone'
+          });
+          $('.drop').droppable({
+            drop: function(ev, ui) {
+              $(this).first().empty();
+              $(this).append($(ui.draggable).clone());
+            }
+          });
         },
         error: function() { console.log('Device control failed'); }
       });
@@ -32,13 +42,46 @@ $(function() {
 
   $('#chords').click(function(e) {
     var targetString = $(e.target);
-    targetString = targetString[0].id
+    targetString = targetString[0].id;
     targetString = targetString.replace(' ', '_');
-    targetString = '/img/sound/'+targetString+'.mp3';
+    targetString = '/img/sound/' + targetString + '.mp3';
     if (playing) {
       playing.pause();
     }
     playing = new Audio(targetString);
     playing.play();
   });
+
+  $('#button').on('click', function(e) {
+    e.preventDefault();
+
+    var obj = {}
+
+    var name = $('#name').val();
+    var chords = [];
+
+    chords.push($('#d1 img').prop('id').toLowerCase());
+    chords.push($('#d2 img').prop('id').toLowerCase());
+    chords.push($('#d3 img').prop('id').toLowerCase());
+    chords.push($('#d4 img').prop('id').toLowerCase());
+
+    obj.name = name;
+    obj.chords = chords;
+
+    $.ajax({
+      contentType: 'application/json',
+      headers: {
+        token: $.cookie('token')
+      },
+      dataType: 'json',
+      success: function(theta) {
+        console.log('success', theta);
+      },
+      error: function(data) { console.log(data); },
+      processData: false,
+      type: 'POST',
+      data: JSON.stringify(obj),
+      url: '/newCP'
+    });
+  })
 });
