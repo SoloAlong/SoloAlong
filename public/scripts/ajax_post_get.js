@@ -13,7 +13,10 @@ $('#register-submit').click(() => {
   data: JSON.stringify(signup),
   dataType: 'json',
   success: function(data) { console.log(data.msg); $('#response').text(data.msg);},
-  error: function(data) { console.log(data); },
+  error: function(data) {
+    var msg = JSON.parse(data.responseText).msg;
+     $('#response').text(msg);
+   },
   processData: false,
   type: 'POST',
   url: '/signup'

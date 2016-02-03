@@ -25,7 +25,7 @@ describe('User Authentication: ', () => {
         .send(invalidUser)
         .end((err, res) => {
           expect(err).to.eql(null);
-          expect(res).to.have.status(200);
+          expect(res).to.have.status(400);
           expect(res.body.msg).to.eql('Please enter an email');
           done();
         });
@@ -41,7 +41,7 @@ describe('User Authentication: ', () => {
         .send(invalidUser)
         .end((err, res) => {
           expect(err).to.eql(null);
-          expect(res).to.have.status(200);
+          expect(res).to.have.status(400);
           expect(res.body.msg).to.eql('Please enter a valid email');
           done();
         });
@@ -57,7 +57,7 @@ describe('User Authentication: ', () => {
         .send(invalidUser)
         .end((err, res) => {
           expect(err).to.eql(null);
-          expect(res).to.have.status(200);
+          expect(res).to.have.status(400);
           expect(res.body.msg).to.eql('Please enter a user name');
           done();
         });
@@ -74,7 +74,7 @@ describe('User Authentication: ', () => {
         .send(invalidUser)
         .end((err, res) => {
           expect(err).to.eql(null);
-          expect(res).to.have.status(200);
+          expect(res).to.have.status(400);
           expect(res.body.msg).to.eql('Please enter a password longer than 7 characters');
           done();
         });
@@ -111,7 +111,7 @@ describe('User Authentication: ', () => {
         .send(sameUser)
         .end((err, res) => {
           expect(err).to.eql(null);
-          expect(res).to.have.status(200);
+          expect(res).to.have.status(400);
           expect(res.body.msg).to.eql('User already exists! Please use a different username');
           done();
         });
