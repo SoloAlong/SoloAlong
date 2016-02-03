@@ -2,18 +2,21 @@ $('#register-submit').click(() => {
   console.log($('#email').val());
   console.log($('#username').val());
   console.log($('#password').val());
-  console.log($('#confirmpassword').val());
+  console.log($('#comfirmpassword').val());
   var signup = {
     email: $('#email').val(),
     username: $('#username').val(),
     password: $('#password').val(),
-    confirmpassword: $('#confirmpassword').val()
+    comfirmpassword: $('#comfirmpassword').val()
   };
   $.ajax({ contentType: 'application/json',
   data: JSON.stringify(signup),
   dataType: 'json',
   success: function(data) { console.log(data.msg); $('#response').text(data.msg);},
-  error: function(data) { console.log(data); },
+  error: function(data) {
+    var msg = JSON.parse(data.responseText).msg;
+     $('#response').text(msg);
+   },
   processData: false,
   type: 'POST',
   url: '/signup'
@@ -33,10 +36,19 @@ $('#login-submit').click(() => {
 
   $.ajax({
   headers: { 'Authorization': 'Basic ' + headauthbase64 },
-  success: function(data) { console.log(data.msg); $('#response').text(data.msg);},
+  success: function(data) {
+    console.log(data);
+    console.log(data.msg);
+    $('#response').text(data.msg);
+    var token = 'token';
+    $.cookie(token, data.token);
+    window.location.href = '/profiles';
+  },
   error: function(data) {
      var msg = JSON.parse(data.responseText).msg;
      $('#response').text(msg);
+     var token = 'token';
+    $.cookie(token, '');
   },
   processData: false,
   type: 'GET',
