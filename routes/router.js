@@ -69,16 +69,9 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
   });
 });
 
-// soloRouter.get('/chordsInKey', (req, res) => {
-//   var index = fs.createReadStream(__dirname + '/public/chordsInKey.html');
-//   index.pipe(res);
-// });
-
 soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
   var k = req.headers.key;
-  console.log('before: ' + k)
   k = (k.endsWith('flat')) ? req.headers.key.charAt(0) + '♭' : k;
-  console.log(k);
   var o = req.headers.orientation;
   var names = chordNames(k, o);
   var chord = {}
