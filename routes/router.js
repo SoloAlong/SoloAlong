@@ -74,9 +74,7 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
 
 soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
   var k = req.headers.key;
-  console.log('before: ' + k)
   k = (k.endsWith('flat')) ? req.headers.key.charAt(0) + '♭' : k;
-  console.log(k);
   var o = req.headers.orientation;
   var names = chordNames(k, o);
   var chord = {}
@@ -88,29 +86,5 @@ soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
   chord.chord5 = dictionary[names[4]];
   chord.chord6 = dictionary[names[5]];
   chord.chord7 = dictionary[names[6]];
-  // CPmodel.find({userid: req.user.id}, (err, chords) => {
-  //   if (err) {
-  //     return handleDBError(err, res);
-  //   }
-
-  //   User.find({_id: req.user.id}, (err, user) => {
-  //     if (err) {
-  //       return handleDBError(err, res);
-  //     }
-  //     chordArray = [];
-
-  //     for (var i = 0; i < chords.length; i += 1) {
-  //       var chord = {};
-  //       chord.name = chords[i].name;
-  //       chord.chord1 = dictionary[chords[i].chords[0]];
-  //       chord.chord2 = dictionary[chords[i].chords[1]];
-  //       chord.chord3 = dictionary[chords[i].chords[2]];
-  //       chord.chord4 = dictionary[chords[i].chords[3]];
-  //       chordArray.push(chord);
-  //     }
-
-  //     return res.status(200).json(chordArray);
-  //   });
-  // });
   return res.status(200).json(chord);
 });
