@@ -7,6 +7,7 @@ const User = require(__dirname + '/../models/user');
 const CPmodel = require(__dirname + '/../models/cp');
 const jwtAuth = require(__dirname + '/../lib/jwt_auth');
 const dictionary = require(__dirname + '/../public/scripts/chords');
+const chordNames = require(__dirname + '/../lib/logic/index.js')
 
 var soloRouter = module.exports = exports = express.Router();
 
@@ -40,16 +41,16 @@ soloRouter.post('/newCP', jwtAuth, jsonParser, (req, res) => {
 // used AFTER sign-up/sign-in
 // validates token and returns profile info to profile.js
 soloRouter.get('/profile', jwtAuth, (req, res) => {
-  CPmodel.find({userid: req.user.id}, (err, chords) => {
+  CPmodel.find( { userid: req.user.id }, (err, chords) => {
     if (err) {
       return handleDBError(err, res);
     }
 
-    User.find({_id: req.user.id}, (err, user) => {
+    User.find( { _id: req.user.id }, (err, user) => {
       if (err) {
         return handleDBError(err, res);
       }
-      chordArray = [];
+      var chordArray = [];
 
       for (var i = 0; i < chords.length; i += 1) {
         var chord = {};
@@ -61,7 +62,33 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
         chordArray.push(chord);
       }
 
-      return res.status(200).json(chordArray);
+      console.log(chordArray);
+
+      return res.status(200).json( { chord: chordArray, userinfo: user } );
     });
   });
+});
+
+// soloRouter.get('/chordsInKey', (req, res) => {
+//   var index = fs.createReadStream(__dirname + '/public/chordsInKey.html');
+//   index.pipe(res);
+// });
+
+soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
+  var k = req.headers.key;
+  console.log('before: ' + k)
+  k = (k.endsWith('flat')) ? req.headers.key.charAt(0) + '♭' : k;
+  console.log(k);
+  var o = req.headers.orientation;
+  var names = chordNames(k, o);
+  var chord = {}
+  chord.name = k + ' ' + o;
+  chord.chord1 = dictionary[names[0]];
+  chord.chord2 = dictionary[names[1]];
+  chord.chord3 = dictionary[names[2]];
+  chord.chord4 = dictionary[names[3]];
+  chord.chord5 = dictionary[names[4]];
+  chord.chord6 = dictionary[names[5]];
+  chord.chord7 = dictionary[names[6]];
+  return res.status(200).json(chord);
 });
