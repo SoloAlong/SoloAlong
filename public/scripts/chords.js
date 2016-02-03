@@ -1,7 +1,7 @@
 'use strict';
 
 var dictionary = module.exports = exports = {
-  'A major': {
+  'a major': {
     'name': 'A major',
     'notes': [ 'a', 'd♭', 'e' ],
     'image': '/img/images/A_major.png',
@@ -20,7 +20,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/a_diminished.mp3'
   },
 
-  'B major': {
+  'b major': {
     'name': 'B major',
     'notes': [ 'b', 'e♭', 'g♭' ],
     'image': '/img/images/B_major.png',
@@ -39,7 +39,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/b_diminished.mp3'
   },
 
-  'C major': {
+  'c major': {
     'name': 'C major',
     'notes': [ 'c', 'e', 'g' ],
     'image': '/img/images/C_major.png',
@@ -58,7 +58,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/c_diminished.mp3'
   },
 
-  'D major': {
+  'd major': {
     'name': 'D major',
     'notes': [ 'd', 'g♭', 'a' ],
     'image': '/img/images/D_major.png',
@@ -77,7 +77,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/d_diminished.mp3'
   },
 
-  'E major': {
+  'e major': {
     'name': 'E major',
     'notes': [ 'e', 'a♭', 'b' ],
     'image': '/img/images/E_major.png',
@@ -96,7 +96,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/e_diminished.mp3'
   },
 
-  'F major': {
+  'f major': {
     'name': 'F major',
     'notes': [ 'f', 'a', 'c' ],
     'image': '/img/images/F_major.png',
@@ -115,7 +115,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/f_diminished.mp3'
   },
 
-  'G major': {
+  'g major': {
     'name': 'G major',
     'notes': [ 'g', 'b', 'd' ],
     'image': '/img/images/G_major.png',
@@ -134,7 +134,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/g_diminished.mp3'
   },
 
-  'A♭ major': {
+  'a♭ major': {
     'name': 'A♭ major',
     'notes': [ 'a♭', 'c', 'e♭' ],
     'image': '/img/images/A♭_major.png',
@@ -153,7 +153,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/a♭_diminished.mp3'
   },
 
-  'B♭ major': {
+  'b♭ major': {
     'name': 'B♭ major',
     'notes': [ 'b♭', 'd', 'f' ],
     'image': '/img/images/B♭_major.png',
