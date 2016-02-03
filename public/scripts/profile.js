@@ -4,7 +4,7 @@ $(function() {
     $.ajax({
       contentType: 'application/json',
       headers: {
-        token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2YjBmNTYxMmVjZmIyNDAxYzgwMDcxNCIsImlhdCI6MTQ1NDQzNzcyOX0.H40J-MCk6V3cxv_04HtkV3U1McZ0sM8z0MbskgTom7Q'
+        token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2YjBmZmUzNDVmYzU3NjQwZmU2MTgzNCIsImlhdCI6MTQ1NDQ0MDQxOX0.WMT6XcEQ6PzVOF45Kr33jo4k0wd12BOXK2Bxua-i660'
       },
       dataType: 'json',
       success: function(theta) {
