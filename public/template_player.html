@@ -1,5 +1,5 @@
 <div>
-  <div id='player1' style="margin:auto">
+  <div id='playerTemplate' style="margin:auto">
     <div class="form-group row">
       <div class="col-md-6 selectContainer">
         <select class="form-control" id="bpm">
@@ -37,6 +37,7 @@
         <button type="button" class="btn btn-secondary" id="pause" onclick="document.getElementById('audio').pause()" style="width:100%">Stop</button>
       </div>
     </div>
+
         <audio id="audio" preload="auto" tabindex="0" >
           <source src="{{chord1.audio}}">
           Your Fallback goes here
