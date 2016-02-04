@@ -2,6 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="196x196" href="/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="/favicon-160.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" href="/favicon-57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/favicon-144.png">
+    <meta name="msapplication-config" content="/browserconfig.xml">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="css/profile.css" rel="stylesheet">
     <title>profiles</title>
@@ -18,12 +38,15 @@
     </style>
   </head>
   <body>
-    <header style= "text-align:center">
-      <h1>Solo Along</h1>
-      <p>Subtitle</p>
-    </header>
 
-    <div style="padding-left: 30px" id="userinfo">
+    <div style="width:70%; margin:auto; margin-top:3em;">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/img/SoloAlongbackground.png" alt="logo" class="img-responsive" width="400" height="400">
+        </div>
+        <div class="col-md-4" id="userinfo" style="padding-top:6em;">
+        </div>
+      </div>
     </div>
     <button id='load' type="player" value="player" disabled>Load into Player</button>
     <div class="container">
@@ -46,14 +69,14 @@
     <div style="text-align: center; vertical-align: middle; padding: 30px;">
       <button class="button"><span>New Chords</span></button>
     </div>
-
-    
+    <div style="text-align: center; vertical-align: middle; padding: 15px;">
+    <button class="button" id='load' type="player" value="player" disabled><span>Player</span></button>
 
     <div id="player" class="container-fluid">
     </div>
     <div id="chords" class="container-fluid">
     </div>
-
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js" charset="utf-8"></script>
