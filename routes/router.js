@@ -89,10 +89,6 @@ soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
 });
 
 soloRouter.get('/player2', jwtAuth, jsonParser, (req, res) => {
-  //change this to the _id user requested as well. just return 1st for now
-  console.log('chordid ' + req.headers.chordid);
-  // CPmodel.find( { userid: req.user.id }, (err, chords) => {
-  // CPmodel.find( { _id: req.headers.chordId }, (err, chords) => {
   CPmodel.find( { _id: req.headers.chordid }, (err, chords) => {
     if (err) {
       return handleDBError(err, res);
@@ -104,7 +100,6 @@ soloRouter.get('/player2', jwtAuth, jsonParser, (req, res) => {
     obj.chord2 = dictionary[chords[0].chords[1]];
     obj.chord3 = dictionary[chords[0].chords[2]];
     obj.chord4 = dictionary[chords[0].chords[3]];
-    //just get the first cp object of the user
     return res.status(200).json( obj ); 
   }); 
 });

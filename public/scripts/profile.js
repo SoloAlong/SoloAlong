@@ -34,7 +34,6 @@ $(() => {
           $('#chords').append(chordm);
         }
         $('#chords').children().first().attr('class', 'item active');
-
        
         $('#chords img').click(function(e){
           selected = $(e.target).attr('class');
@@ -43,13 +42,14 @@ $(() => {
         });
 
         $('#load').click(function(){
-          //ajax to template
+          //player js
           var audio;
           var playlist;
           var tracks;
           var current;
           var bpmTime = 2000;
           var doItAgain;
+          var playing = true;
           $(() => {
             $.get('/../template_player.html', (data) => {
               var template = Handlebars.compile(data);
@@ -64,7 +64,9 @@ $(() => {
                 type: 'GET',
                 url: '/player2',
                 success: function(theta) {
-                  console.log(theta);
+                  selected = undefined;
+                  document.getElementById('load').disabled = true; 
+
                   var html = template(theta);
                   //stop!
                   window.clearTimeout(doItAgain);
@@ -114,12 +116,22 @@ $(() => {
                     nextSample();
                   });
 
-                  $('#pause').on('click', function(){
+                  $('#load').on('click', function(){
                     window.clearTimeout(doItAgain);
                   });
 
+                  $('#pause').on('click', function(){
+                    if (playing){
+                      window.clearTimeout(doItAgain);
+                      playing = false;
+                    }
+                  });
+
                   $('#play').on('click', function(){
-                    nextSample();
+                    if(!playing){
+                      playing = true;
+                      return nextSample();
+                    }
                 });
 
                 },
