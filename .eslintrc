@@ -10,7 +10,8 @@
     "$": true,
     "ga": true,
     "jQuery": true,
-    "router": true
+    "router": true,
+    "Handlebars": true
   },
   "rules": {
     "comma-dangle": 2,
