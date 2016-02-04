@@ -90,11 +90,14 @@ soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
 
 soloRouter.get('/player2', jwtAuth, jsonParser, (req, res) => {
   //change this to the _id user requested as well. just return 1st for now
-  CPmodel.find( { userid: req.user.id }, (err, chords) => {
-  // CPmodel.find( { _id: "ObjectId(" + req.headers.id + ")" }, (err, chords) => {
+  console.log('chordid ' + req.headers.chordid);
+  // CPmodel.find( { userid: req.user.id }, (err, chords) => {
+  // CPmodel.find( { _id: req.headers.chordId }, (err, chords) => {
+  CPmodel.find( { _id: req.headers.chordid }, (err, chords) => {
     if (err) {
       return handleDBError(err, res);
     }
+    console.log(chords);
     var obj = {};
     obj.name = chords[0].name;
     obj.chord1 = dictionary[chords[0].chords[0]];
