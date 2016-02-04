@@ -15,7 +15,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('mocha', () => {
-  return gulp.src('test/*.js')
+  return gulp.src('test/*test*.js')
     .pipe(mocha({ reporter: 'nyan' }));
 });
 

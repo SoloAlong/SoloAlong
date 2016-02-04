@@ -1,3 +1,4 @@
+Handlebars = Handlebars;
 $(() => {
   $.get('/../user_template.html', (data) => {
     var template = Handlebars.compile(data);
