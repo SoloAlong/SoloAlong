@@ -63,9 +63,6 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
         chord.chord4 = dictionary[chords[i].chords[3]];
         chordArray.push(chord);
       }
-
-      //console.log(chordArray);
-
       return res.status(200).json( { chord: chordArray, userinfo: user } );
     });
   });
