@@ -3,44 +3,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const handleDBError = require(__dirname + '/../lib/handleDBError');
-const basicHTTP = require(__dirname + '/../lib/basic_http');
 const User = require(__dirname + '/../models/user');
 const CPmodel = require(__dirname + '/../models/cp');
 const jwtAuth = require(__dirname + '/../lib/jwt_auth');
 const dictionary = require(__dirname + '/../public/scripts/chords');
-const chordNames = require(__dirname + '/../lib/logic/index.js')
+const chordNames = require(__dirname + '/../lib/logic/index.js');
 
 var soloRouter = module.exports = exports = express.Router();
 
-//ROUTE 0: index.js
-// to be handled in server
-// validates root note, key/orientation
-// gets notes and name of each chord
-// shouts out the available chords
-
-//ROUTE 1: SIGN UP
-// to be handled in Auth Router
-// validates email/pw, creates User
-
-//ROUTE 2: SIGN IN
-// to be handled in Auth Router
-// validates User with basic HTTP, gets User info
-
-//ROUTE 3: Submit NEW chord progression
-// validates token, creates new CP in db
-// updates and sends new profile page
 soloRouter.post('/newCP', jwtAuth, jsonParser, (req, res) => {
   var newCP = new CPmodel(req.body);
   newCP.userid = req.user._id;
   newCP.save((err, newCPinfo) => {
-    if (err) {return handleDBError(err, res);} //check for bad save
+    if (err) {return handleDBError(err, res);} // check for bad save
     res.status(200).json(newCPinfo);
   });
 });
 
-//ROUTE 4: GETS PROFILE INFO FROM DB
-// used AFTER sign-up/sign-in
-// validates token and returns profile info to profile.js
 soloRouter.get('/profile', jwtAuth, (req, res) => {
   CPmodel.find( { userid: req.user.id }, (err, chords) => {
     if (err) {
@@ -70,10 +49,10 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
 
 soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
   var k = req.headers.key;
-  k = (k.endsWith('flat')) ? req.headers.key.charAt(0) + '♭' : k;
+  k = k.endsWith('flat') ? req.headers.key.charAt(0) + '♭' : k;
   var o = req.headers.orientation;
   var names = chordNames(k, o);
-  var chord = {}
+  var chord = {};
   chord.name = k + ' ' + o;
   chord.chord1 = dictionary[names[0]];
   chord.chord2 = dictionary[names[1]];
@@ -101,4 +80,31 @@ soloRouter.get('/player2', jwtAuth, jsonParser, (req, res) => {
     obj.chord4 = dictionary[chords[0].chords[3]];
     return res.status(200).json( obj );
   });
+});
+
+soloRouter.use(express.static(__dirname + '/public'));
+
+soloRouter.get('/', (req, res) => {
+  var index = fs.createReadStream(__dirname + '/public/index.html');
+  index.pipe(res);
+});
+
+soloRouter.get('/index', (req, res) => {
+  var index = fs.createReadStream(__dirname + '/public/index.html');
+  index.pipe(res);
+});
+
+soloRouter.get('/home', (req, res) => {
+  var index = fs.createReadStream(__dirname + '/public/index.html');
+  index.pipe(res);
+});
+
+soloRouter.get('/profiles', (req, res) => {
+  var index = fs.createReadStream(__dirname + '/public/profile.html');
+  index.pipe(res);
+});
+
+soloRouter.get('/chordsInKey', (req, res) => {
+  var index = fs.createReadStream(__dirname + '/public/chordsInKey.html');
+  index.pipe(res);
 });
