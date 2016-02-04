@@ -7,6 +7,10 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      .drop
+      {float:left; width:367px; height:417px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
   </head>
   <body>
     <header style= "text-align:center">
@@ -34,7 +38,27 @@
     <div id="chords" class="container-fluid">
     </div>
 
+    <div class="drop" id="d1">
+
+    </div>​
+    <div class="drop" id="d2">
+
+    </div>
+    <div class="drop" id="d3">
+
+    </div>
+    <div class="drop" id="d4">
+
+    </div>
+
+    <div>
+      Chord Progression Name:<br>
+      <input type="text" id="name"><br>
+      <input type="submit" id="button">
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script type="text/javascript" src="/scripts/chordsInKey.js"></script>

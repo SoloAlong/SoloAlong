@@ -1,6 +1,7 @@
 const fs = require('fs');
 const express = require('express');
-const jsonParser = require('body-parser').json();
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 const handleDBError = require(__dirname + '/../lib/handleDBError');
 const basicHTTP = require(__dirname + '/../lib/basic_http');
 const User = require(__dirname + '/../models/user');
