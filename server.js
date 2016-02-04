@@ -15,7 +15,7 @@ app.post('/api/message', jsonParser, (req, res) => {
   var msg = new Message(req.body);
   msg.save((err, data) => {
     if (err) return res.status(500).json({ msg: 'server err' });
-
+    console.log('server err with : ' + data);
     res.json(msg);
   });
 });
