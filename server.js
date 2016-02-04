@@ -47,11 +47,6 @@ app.get('/chordsInKey', (req, res) => {
   index.pipe(res);
 });
 
-app.get('/player', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/public/player2.html');
-  index.pipe(res);
-});
-
 const s_router = require(__dirname + '/routes/router');
 const authRouter = require(__dirname + '/routes/auth_router');
 
