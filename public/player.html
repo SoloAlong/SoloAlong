@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test of multi-audio</title>
+</head>
+<body>
+Test of multiple audio files
+
+<audio id="audio" preload="auto" tabindex="0" >
+  <source src="img/sound/a_minor.mp3">
+  Your Fallback goes here
+</audio></pre>
+  
+    <ul id="playlist">
+        <li class="active">
+            <a href="img/sound/A_major.mp3">
+                A major
+            </a>
+        </li>
+        <li>
+            <a href="img/sound/b_minor.mp3">
+                B minor
+            </a>
+        </li>
+        <li>
+            <a href="img/sound/a_diminished.mp3">
+                a diminished
+            </a>
+        </li>
+        <li>
+            <a href="img/sound/D_major.mp3">
+                D major
+            </a>
+        </li>
+    </ul>
+
+    <div>
+      <button id="r" onclick="document.getElementById('audio').play()">Play</button>
+      <button id="p" onclick="document.getElementById('audio').pause()">Pause</button>
+      <button onclick="document.getElementById('audio').volume+=0.1">Increase Volume</button>
+      <button onclick="document.getElementById('audio').volume-=0.1">Decrease Volume</button>
+    </div>
+
+
+    <div>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="scripts/player.js"></script>
+    </div>
+
+
+  </body>
+
+</html>

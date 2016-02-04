@@ -54,9 +54,7 @@ $(function() {
 
   $('#button').on('click', function(e) {
     e.preventDefault();
-
     var obj = {}
-
     var name = $('#name').val();
     var chords = [];
 
