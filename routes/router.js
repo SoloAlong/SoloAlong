@@ -55,6 +55,7 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
 
       for (var i = 0; i < chords.length; i += 1) {
         var chord = {};
+        chord.id = chords[i]._id;
         chord.name = chords[i].name;
         chord.chord1 = dictionary[chords[i].chords[0]];
         chord.chord2 = dictionary[chords[i].chords[1]];
