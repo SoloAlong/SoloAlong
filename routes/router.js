@@ -55,6 +55,7 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
 
       for (var i = 0; i < chords.length; i += 1) {
         var chord = {};
+        chord.id = chords[i]._id;
         chord.name = chords[i].name;
         chord.chord1 = dictionary[chords[i].chords[0]];
         chord.chord2 = dictionary[chords[i].chords[1]];
@@ -63,7 +64,7 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
         chordArray.push(chord);
       }
 
-      console.log(chordArray);
+      //console.log(chordArray);
 
       return res.status(200).json( { chord: chordArray, userinfo: user } );
     });
@@ -89,10 +90,14 @@ soloRouter.get('/chordsInKeyz', jwtAuth, jsonParser, (req, res) => {
 
 soloRouter.get('/player2', jwtAuth, jsonParser, (req, res) => {
   //change this to the _id user requested as well. just return 1st for now
-  CPmodel.find( { userid: req.user.id }, (err, chords) => {
+  console.log('chordid ' + req.headers.chordid);
+  // CPmodel.find( { userid: req.user.id }, (err, chords) => {
+  // CPmodel.find( { _id: req.headers.chordId }, (err, chords) => {
+  CPmodel.find( { _id: req.headers.chordid }, (err, chords) => {
     if (err) {
       return handleDBError(err, res);
     }
+    console.log(chords);
     var obj = {};
     obj.name = chords[0].name;
     obj.chord1 = dictionary[chords[0].chords[0]];
