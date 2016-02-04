@@ -172,7 +172,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/b♭_diminished.mp3'
   },
 
-  'D♭ major': {
+  'd♭ major': {
     'name': 'D♭ major',
     'notes': [ 'd♭', 'f', 'a♭' ],
     'image': '/img/images/D♭_major.png',
@@ -191,7 +191,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/d♭_diminished.mp3'
   },
 
-  'E♭ major': {
+  'e♭ major': {
     'name': 'E♭ major',
     'notes': [ 'e♭', 'g', 'b♭' ],
     'image': '/img/images/E♭_major.png',
@@ -210,7 +210,7 @@ var dictionary = module.exports = exports = {
     'audio': '/img/sound/e♭_diminished.mp3'
   },
 
-  'G♭ major': {
+  'g♭ major': {
     'name': 'G♭ major',
     'notes': [ 'g♭', 'b♭', 'd♭' ],
     'image': '/img/images/G♭_major.png',
