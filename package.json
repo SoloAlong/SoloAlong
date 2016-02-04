@@ -13,7 +13,7 @@
     "solo",
     "guitar"
   ],
-  "author": "Yueyue Qin, Gene Troy, Aaron Filson, Cameron Forras, James Vermillion",
+  "author": "Yueyue Qin, Gene Troy, Aaron Filson, Cameron Forras, James Vermillion, Kenny Suh",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^0.8.5",
