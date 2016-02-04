@@ -5,7 +5,7 @@ $(function() {
   function dropChange() {
     key = $('#letter').val();
     orientation = $('#orientation').val();
-    $.get('/../template_chordsInKey.html', function(data) {
+    $.get('/../template_chordsInKey.html', (data) => {
       var template = Handlebars.compile(data);
       $.ajax({
         type: 'GET',
@@ -18,7 +18,6 @@ $(function() {
         },
         processData: false,
         success: function(theta) {
-          console.log(theta);
           var html = template(theta);
           $('#chords').empty();
           $('#chords').append(html);
@@ -33,7 +32,7 @@ $(function() {
             }
           });
         },
-        error: function() { console.log('Device control failed'); }
+        error: function(data) { console.log(data); }
       });
     });
   }
@@ -41,7 +40,7 @@ $(function() {
   $('#orientation').change(dropChange);
   dropChange();
 
-  $('#chords, #cp').click(function(e) {
+  $('#chords, #cp').click( (e) => {
     var targetString = $(e.target);
     targetString = targetString[0].id;
 
@@ -57,7 +56,7 @@ $(function() {
     playing.play();
   });
 
-  $('#button').on('click', function(e) {
+  $('#button').on('click',(e) => {
     e.preventDefault();
 
     var obj = {};
@@ -83,8 +82,7 @@ $(function() {
         token: $.cookie('token')
       },
       dataType: 'json',
-      success: function(theta) {
-        console.log('success');
+      success: (theta) => {
         window.location.href = '/profiles';
       },
       error: function(data) { console.log(data); },
