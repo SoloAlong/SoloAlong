@@ -3,11 +3,15 @@ body {
   background-color: gray;
   background-image: url("background.png");
   font-family: helvetica !important;
-  font-weight: bold !important;
+  font-weight: bold !important; 
 }
 .carousel-inner {
-  background-color: white;
-  opacity: 0.4;
+  position:relative;
+  background-color: rgba(255,255,255,0.2);
+}
+.carousel-inner img {
+  position:relative;
+  z-index:1;
 }
 .button {
   display: inline-block;
