@@ -66,3 +66,9 @@ body {
   opacity: 1;
   right: 0;
 }
+#font-head {
+  color: white;
+  text-shadow: 5px 5px 5px black;
+  text-align: center;
+  font-size: 1.5em;
+}
