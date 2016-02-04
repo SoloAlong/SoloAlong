@@ -35,6 +35,7 @@ $(() => {
           var chordm = template(chord[i]);
           $('#chords').append(chordm);
         }
+        $('#chords').children().first().attr('class', 'item active');
       },
       error: function(data) { console.log(data); },
       processData: false,
