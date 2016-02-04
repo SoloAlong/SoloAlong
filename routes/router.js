@@ -63,9 +63,6 @@ soloRouter.get('/profile', jwtAuth, (req, res) => {
         chord.chord4 = dictionary[chords[i].chords[3]];
         chordArray.push(chord);
       }
-
-      //console.log(chordArray);
-
       return res.status(200).json( { chord: chordArray, userinfo: user } );
     });
   });
@@ -93,7 +90,6 @@ soloRouter.get('/player2', jwtAuth, jsonParser, (req, res) => {
     if (err) {
       return handleDBError(err, res);
     }
-    console.log(chords);
     var obj = {};
     obj.name = chords[0].name;
     obj.chord1 = dictionary[chords[0].chords[0]];
