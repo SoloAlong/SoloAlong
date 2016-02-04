@@ -143,4 +143,9 @@ $(() => {
       window.location.href = '/chordsInKey';
       return false;
   });
+
+  $('.button-logout').click(() => {
+    $.cookie('token', '', -1);
+    window.location.href = '/';
+  });
 });
