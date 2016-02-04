@@ -42,13 +42,7 @@ $(() => {
           console.log(selected);
         });
 
-        // $('button').click(function(){
-        //   //ajax to template
-        //   console.log(selected);
-        //   var _id = selected;
-        // });
-
-        $('button').click(function(){
+        $('#load').click(function(){
           //ajax to template
           var audio;
           var playlist;
