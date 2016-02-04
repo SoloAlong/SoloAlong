@@ -2,7 +2,7 @@ $(function() {
   var key;
   var orientation;
   var playing;
-  function dropChange(){
+  function dropChange() {
     key = $('#letter').val();
     orientation = $('#orientation').val();
     $.get('/../template_chordsInKey.html', function(data) {
@@ -39,6 +39,7 @@ $(function() {
   }
   $('#letter').change(dropChange);
   $('#orientation').change(dropChange);
+  dropChange();
 
   $('#chords').click(function(e) {
     var targetString = $(e.target);
@@ -59,6 +60,10 @@ $(function() {
 
     var name = $('#name').val();
     var chords = [];
+
+    if (!($('#d1 img').prop('id') && $('#d2 img').prop('id') && $('#d3 img').prop('id') && $('#d4 img').prop('id'))) {
+      return $('#er').show();
+    }
 
     chords.push($('#d1 img').prop('id').toLowerCase());
     chords.push($('#d2 img').prop('id').toLowerCase());
