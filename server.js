@@ -28,12 +28,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/index', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/index.html');
+  var index = fs.createReadStream(__dirname + '/public/index.html');
   index.pipe(res);
 });
 
 app.get('/home', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/index.html');
+  var index = fs.createReadStream(__dirname + '/public/index.html');
   index.pipe(res);
 });
 
@@ -44,11 +44,6 @@ app.get('/profiles', (req, res) => {
 
 app.get('/chordsInKey', (req, res) => {
   var index = fs.createReadStream(__dirname + '/public/chordsInKey.html');
-  index.pipe(res);
-});
-
-app.get('/player', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/public/player2.html');
   index.pipe(res);
 });
 

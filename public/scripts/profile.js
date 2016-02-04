@@ -38,7 +38,7 @@ $(() => {
         $('#chords img').click(function(e){
           selected = $(e.target).attr('class');
           document.getElementById('load').disabled = false; 
-          console.log(selected);
+          // console.log(selected);
         });
 
         $('#load').click(function(){
@@ -130,9 +130,25 @@ $(() => {
                   $('#play').on('click', function(){
                     if(!playing){
                       playing = true;
-                      return nextSample();
+                      nextSample();
                     }
-                });
+                  });
+
+                  $(window).keydown(function (e) {
+                    if (e.keyCode === 32) {
+                      e.preventDefault();
+
+                      if (playing){
+                      window.clearTimeout(doItAgain);
+                      audio[0].pause();
+                      playing = false;
+                      } 
+                      else {
+                      playing = true;
+                      nextSample();
+                      }
+                    }
+                  });
 
                 },
                 error: function(data) { console.log(data); }
