@@ -28,12 +28,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/index', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/index.html');
+  var index = fs.createReadStream(__dirname + '/public/index.html');
   index.pipe(res);
 });
 
 app.get('/home', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/index.html');
+  var index = fs.createReadStream(__dirname + '/public/index.html');
   index.pipe(res);
 });
 
