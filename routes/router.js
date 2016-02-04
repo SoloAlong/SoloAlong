@@ -82,8 +82,6 @@ soloRouter.get('/player2', jwtAuth, jsonParser, (req, res) => {
   });
 });
 
-soloRouter.use(express.static(__dirname + '/public'));
-
 soloRouter.get('/', (req, res) => {
   var index = fs.createReadStream(__dirname + '/public/index.html');
   index.pipe(res);
