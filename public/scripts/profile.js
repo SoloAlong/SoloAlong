@@ -1,5 +1,5 @@
 $(() => {
-  $.get('/../user_template.html', (data) => {
+  $.get('/../template_userinfo.html', (data) => {
     var template = Handlebars.compile(data);
     $.ajax({
       contentType: 'application/json',
@@ -20,7 +20,7 @@ $(() => {
       error: function(data) { console.log(data); }
     });
   });
-  $.get('/../template.html', (data) => {
+  $.get('/../template_chords.html', (data) => {
     var template = Handlebars.compile(data);
     $.ajax({
       contentType: 'application/json',
@@ -48,5 +48,5 @@ $(() => {
       window.location.href = '/chordsInKey';
       return false;
   });
- 
+
 });
