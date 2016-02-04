@@ -78,4 +78,10 @@ $(() => {
       url: '/profile'
     });
   });
+
+  $('.button').click(function() {
+      window.location.href = '/chordsInKey';
+      return false;
+  });
+ 
 });
