@@ -1,0 +1,64 @@
+<div>
+    <div id='player'>
+      <select id="bpm">
+        <option value="60">60</option>
+        <option value="70">70</option>
+        <option value="80">80</option>
+        <option value="90">90</option>
+        <option value="100">100</option>
+        <option value="110">110</option>
+        <option selected="selected" value="120">120</option>
+        <option value="130">130</option>
+        <option value="140">140</option>
+        <option value="150">150</option>
+        <option value="160">160</option>
+        <option value="170">170</option>
+        <option value="180">180</option>
+        <option value="190">190</option>
+        <option value="200">200</option>
+        <option value="210">210</option>
+        <option value="220">220</option>
+        <option value="210">210</option>
+        <option value="220">220</option>
+        <option value="230">230</option>
+        <option value="240">240</option>
+        <option value="250">250</option>
+        <option value="260">260</option>
+        <option value="270">270</option>
+        <option value="280">280</option>
+      </select>
+        <audio id="audio" preload="auto" tabindex="0" >
+          <source src="{{chord1.audio}}">
+          Your Fallback goes here
+        </audio></pre>
+            <ul id="playlist" style="display: none;">
+                <li class="active">
+                    <a href="{{chord1.audio}}">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{chord2.audio}}">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{chord3.audio}}">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{chord4.audio}}">
+                    </a>
+                </li>
+            </ul>
+    </div>
+    <div>
+      <button id="play" onclick="document.getElementById('audio').play()">Play</button>
+      <button id="pause" onclick="document.getElementById('audio').pause()">Pause</button>
+    </div>
+  <div>
+    <h2>{{name}}</h2>
+    <img id='{{chord1.name}}' src="{{chord1.image}}"/>
+    <img id='{{chord2.name}}' src="{{chord2.image}}"/>
+    <img id='{{chord3.name}}' src="{{chord3.image}}"/>
+    <img id='{{chord4.name}}' src="{{chord4.image}}"/>
+  </div>
+</div>

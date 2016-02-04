@@ -15,7 +15,7 @@ app.post('/api/message', jsonParser, (req, res) => {
   var msg = new Message(req.body);
   msg.save((err, data) => {
     if (err) return res.status(500).json({ msg: 'server err' });
-
+    console.log('server err with : ' + data);
     res.json(msg);
   });
 });
@@ -44,6 +44,11 @@ app.get('/profiles', (req, res) => {
 
 app.get('/chordsInKey', (req, res) => {
   var index = fs.createReadStream(__dirname + '/public/chordsInKey.html');
+  index.pipe(res);
+});
+
+app.get('/player', (req, res) => {
+  var index = fs.createReadStream(__dirname + '/public/player2.html');
   index.pipe(res);
 });
 
