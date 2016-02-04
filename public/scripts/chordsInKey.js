@@ -18,7 +18,6 @@ $(function() {
         },
         processData: false,
         success: function(theta) {
-          console.log(theta);
           var html = template(theta);
           $('#chords').empty();
           $('#chords').append(html);
@@ -33,7 +32,7 @@ $(function() {
             }
           });
         },
-        error: function() { console.log('Device control failed'); }
+        error: function(data) { console.log(data); }
       });
     });
   }
@@ -84,7 +83,6 @@ $(function() {
       },
       dataType: 'json',
       success: function(theta) {
-        console.log('success');
         window.location.href = '/profiles';
       },
       error: function(data) { console.log(data); },
