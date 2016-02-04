@@ -1,30 +1,43 @@
 <div>
-    <div id='playerTemplate'>
-      <select id="bpm">
-        <option value="60">60</option>
-        <option value="70">70</option>
-        <option value="80">80</option>
-        <option value="90">90</option>
-        <option value="100">100</option>
-        <option value="110">110</option>
-        <option selected="selected" value="120">120</option>
-        <option value="130">130</option>
-        <option value="140">140</option>
-        <option value="150">150</option>
-        <option value="160">160</option>
-        <option value="170">170</option>
-        <option value="180">180</option>
-        <option value="190">190</option>
-        <option value="200">200</option>
-        <option value="210">210</option>
-        <option value="220">220</option>
-        <option value="230">230</option>
-        <option value="240">240</option>
-        <option value="250">250</option>
-        <option value="260">260</option>
-        <option value="270">270</option>
-        <option value="280">280</option>
-      </select>
+  <div id='playerTemplate' style="margin:auto">
+    <div class="form-group row">
+      <div class="col-md-6 selectContainer">
+        <select class="form-control" id="bpm">
+          <option value="60">60</option>
+          <option value="70">70</option>
+          <option value="80">80</option>
+          <option value="90">90</option>
+          <option value="100">100</option>
+          <option value="110">110</option>
+          <option selected="selected" value="120">120</option>
+          <option value="130">130</option>
+          <option value="140">140</option>
+          <option value="150">150</option>
+          <option value="160">160</option>
+          <option value="170">170</option>
+          <option value="180">180</option>
+          <option value="190">190</option>
+          <option value="200">200</option>
+          <option value="210">210</option>
+          <option value="220">220</option>
+          <option value="210">210</option>
+          <option value="220">220</option>
+          <option value="230">230</option>
+          <option value="240">240</option>
+          <option value="250">250</option>
+          <option value="260">260</option>
+          <option value="270">270</option>
+          <option value="280">280</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-secondary" id="play" onclick="document.getElementById('audio').play()" style="width:100%">Play</button>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-secondary" id="pause" onclick="document.getElementById('audio').pause()" style="width:100%">Stop</button>
+      </div>
+    </div>
+
         <audio id="audio" preload="auto" tabindex="0" >
           <source src="{{chord1.audio}}">
           Your Fallback goes here
@@ -48,15 +61,23 @@
                 </li>
             </ul>
     </div>
-    <div>
+    <!-- <div>
       <button id="play" onclick="document.getElementById('audio').play()">Play</button>
       <button id="pause" onclick="document.getElementById('audio').pause()">Stop</button>
-    </div>
-  <div>
+    </div> -->
+  <div class="row" stype ="width:70%; margin:auto;">
     <h2 id="font-head">{{name}}</h2>
-    <img id='{{chord1.name}}' src="{{chord1.image}}"/>
-    <img id='{{chord2.name}}' src="{{chord2.image}}"/>
-    <img id='{{chord3.name}}' src="{{chord3.image}}"/>
-    <img id='{{chord4.name}}' src="{{chord4.image}}"/>
+    <div class="col-md-3">
+      <img id='{{chord1.name}}' src="{{chord1.image}}" style="width:150px; height:200px">
+    </div>
+    <div class="col-md-3">
+      <img id='{{chord2.name}}' src="{{chord2.image}}" style="width:150px; height:200px">
+    </div>
+    <div class="col-md-3">
+      <img id='{{chord3.name}}' src="{{chord3.image}}" style="width:150px; height:200px">
+    </div>
+    <div class="col-md-3">
+      <img id='{{chord4.name}}' src="{{chord4.image}}" style="width:150px; height:200px">
+    </div>
   </div>
 </div>
