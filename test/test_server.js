@@ -7,4 +7,4 @@ mongoose.connect('mongodb://localhost/test_app_dev');
 app.use(authRouter);
 
 var PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log('server up'));
+app.listen(PORT, () => console.log('server up on port : ' + PORT));

@@ -4,13 +4,15 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 const mongoose = require('mongoose');
 const server = require(__dirname + '/test_server');
-const User = require(__dirname + '/../models/user');
+// const User = require(__dirname + '/../models/user');
 const origin = 'localhost:4000';
 
 describe('User Authentication: ', () => {
   after((done) => {
     mongoose.connection.db.dropDatabase(() => {
       done();
+      // because linters
+      server.fake = null;
     });
   });
   describe('User signup test: ', () => {
