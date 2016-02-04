@@ -46,3 +46,5 @@ describe('User Authentication: ', () => {
           done();
         });
     });
+  });
+});

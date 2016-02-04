@@ -22,6 +22,7 @@ $(() => {
   });
   $.get('/../template.html', (data) => {
     var template = Handlebars.compile(data);
+    var selected; //make a button inactive until selected has been made
     $.ajax({
       contentType: 'application/json',
       headers: {
@@ -36,6 +37,19 @@ $(() => {
           $('#chords').append(chordm);
         }
         $('#chords').children().first().attr('class', 'item active');
+       
+        $('#chords').on('click', function(e){
+          selected = $(e.target).attr('class');
+          document.getElementById('player').disabled = false; 
+        });
+
+        $('button').click(function(){
+          console.log(selected);
+          var _id = selected;
+          $.ajax({
+
+          });
+        });
       },
       error: function(data) { console.log(data); },
       processData: false,
