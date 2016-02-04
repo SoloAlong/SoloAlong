@@ -25,9 +25,12 @@ body {
   width: 350px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 0 auto;
+  margin: auto;
 }
 .button-logout {
+  position: fixed;
+    top: 0px;
+    right: 0px; 
   float: right;
   display: inline-block;
   border-radius: 4px;
@@ -40,7 +43,8 @@ body {
   width: 150px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 0 auto;
+  margin: 0;
+  z-index: 1;
 }
 .button {
   display: inline-block;
