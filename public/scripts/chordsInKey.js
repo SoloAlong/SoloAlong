@@ -54,7 +54,9 @@ $(function() {
 
   $('#button').on('click', function(e) {
     e.preventDefault();
-    var obj = {}
+
+    var obj = {};
+
     var name = $('#name').val();
     var chords = [];
 
@@ -73,7 +75,8 @@ $(function() {
       },
       dataType: 'json',
       success: function(theta) {
-        console.log('success', theta);
+        console.log('success');
+        window.location.href = '/profiles';
       },
       error: function(data) { console.log(data); },
       processData: false,
@@ -81,5 +84,5 @@ $(function() {
       data: JSON.stringify(obj),
       url: '/newCP'
     });
-  })
+  });
 });

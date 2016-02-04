@@ -39,6 +39,7 @@ $('#login-submit').click(() => {
   success: function(data) {
     console.log(data);
     console.log(data.msg);
+    console.log(data.token);
     $('#response').text(data.msg);
     var token = 'token';
     $.cookie(token, data.token);

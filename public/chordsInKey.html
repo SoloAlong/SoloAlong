@@ -8,16 +8,28 @@
     <meta charset="utf-8">
     <title></title>
     <style>
-      .drop
-      {float:left; width:367px; height:417px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+      .drop {float:left; width:140px; height:205px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+      img {float:left; width: 119px; height:179px;}
+      .select-style {
+          -webkit-appearance: none;
+          height:32px;
+          border:1px solid #000;
+          width: 100px;
+          text-indent: 8px;
+          text-align: center;
+          overflow: hidden;
+          background: url(http://bavotasan.com/wp-content/uploads/2011/05/down_arrow_select.jpg) no-repeat right #ddd;
+          border: 1px solid #ccc;
+      }
     </style>
   </head>
   <body>
-    <header style= "text-align:center">
-      <h1>Solo Along</h1>
-      <p>Subtitle</p>
+    <header style="text-align:center">
+      <img src="img/SoloAlongbackground.png" style="width:400px; height:300px;">
+      <h2>Creating Your Own Chord Progression</h2>
     </header>
-      <select id="letter">
+    <span>
+      <select class='select-style' id="letter">
         <option value="a">a</option>
         <option value="bflat">b♭</option>
         <option value="b">b</option>
@@ -31,7 +43,7 @@
         <option value="g">g</option>
         <option value="aflat">g♯/a♭</option>
       </select>
-      <select id="orientation">
+      <select class='select-style' id="orientation">
         <option value=" major">major</option>
         <option value=" minor">minor</option>
       </select>
