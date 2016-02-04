@@ -35,12 +35,6 @@ $(() => {
         }
         $('#chords').children().first().attr('class', 'item active');
 
-        // $('#chords img').click(function(e){
-        //   selected = $(e.target).attr('class');
-        //   document.getElementById('load').disabled = false;
-        //   // console.log(selected);
-        // });
-
         $('#load').click(function(){
           //player js
           var audio;
@@ -114,6 +108,7 @@ $(() => {
                     window.clearTimeout(doItAgain);
                     bpmTime = 60000/Number($('#bpm').val()) * 4;
                     nextSample();
+                    playing = true;
                   });
 
                   $('#load').on('click', function(){
