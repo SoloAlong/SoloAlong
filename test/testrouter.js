@@ -7,9 +7,6 @@ const origin = 'localhost:4000';
 const User = require(__dirname + '/../models/user');
 const request = chai.request;
 
-var testUser = new User();
-var myTestToken = testUser.generateToken();
-
 describe('Public routes', () => {
   it('should get to /', (done) => {
     request(origin)
@@ -34,16 +31,6 @@ describe('Public routes', () => {
   it('should get to /index', (done) => {
     request(origin)
     .get('/index')
-    .end((err, res) => {
-      expect(res).to.have.status(200);
-      expect(err).to.eql(null);
-      done();
-    });
-  });
-
-  it('should get to /player', (done) => {
-    request(origin)
-    .get('/player')
     .end((err, res) => {
       expect(res).to.have.status(200);
       expect(err).to.eql(null);
