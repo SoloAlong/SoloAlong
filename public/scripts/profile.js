@@ -20,7 +20,7 @@ $(() => {
   });
   $.get('/../template_chords.html', (data) => {
     var template = Handlebars.compile(data);
-    var selected;
+    // var selected;
     $.ajax({
       contentType: 'application/json',
       headers: {
@@ -34,12 +34,12 @@ $(() => {
           $('#chords').append(chordm);
         }
         $('#chords').children().first().attr('class', 'item active');
-       
-        $('#chords img').click(function(e){
-          selected = $(e.target).attr('class');
-          document.getElementById('load').disabled = false; 
-          // console.log(selected);
-        });
+
+        // $('#chords img').click(function(e){
+        //   selected = $(e.target).attr('class');
+        //   document.getElementById('load').disabled = false;
+        //   // console.log(selected);
+        // });
 
         $('#load').click(function(){
           //player js
@@ -50,7 +50,7 @@ $(() => {
           var bpmTime = 2000;
           var doItAgain;
           var playing = true;
-          $(() => {
+          var selected = $('#chords div.active img').attr('class');
             $.get('/../template_player.html', (data) => {
               var template = Handlebars.compile(data);
               $.ajax({
@@ -64,8 +64,8 @@ $(() => {
                 type: 'GET',
                 url: '/player2',
                 success: function(theta) {
-                  selected = undefined;
-                  document.getElementById('load').disabled = true; 
+                  //selected = $('#chords div.active img').attr('class');
+                  //document.getElementById('load').disabled = true;
 
                   var html = template(theta);
                   //stop!
@@ -105,7 +105,7 @@ $(() => {
                   }
                   function nextSample(){
                     current = (current + 1) % tracks.length;
-                    link = playlist.find('a')[current];   
+                    link = playlist.find('a')[current];
                     run($(link),audio[0]);
                     doItAgain = window.setTimeout(nextSample, bpmTime);
                   }
@@ -117,6 +117,7 @@ $(() => {
                   });
 
                   $('#load').on('click', function(){
+                    playing = true;
                     window.clearTimeout(doItAgain);
                   });
 
@@ -134,29 +135,27 @@ $(() => {
                     }
                   });
 
-                  $(window).keydown(function (e) {
-                    if (e.keyCode === 32) {
-                      e.preventDefault();
-
-                      if (playing){
-                      window.clearTimeout(doItAgain);
-                      audio[0].pause();
-                      playing = false;
-                      } 
-                      else {
-                      playing = true;
-                      nextSample();
-                      }
-                    }
-                  });
+                  // $(window).keydown(function (e) {
+                  //   if (e.keyCode === 32) {
+                  //     e.preventDefault();
+                  //
+                  //     if (playing){
+                  //     window.clearTimeout(doItAgain);
+                  //     audio[0].pause();
+                  //     playing = false;
+                  //     }
+                  //     else {
+                  //     playing = true;
+                  //     nextSample();
+                  //     }
+                  //   }
+                  // });
 
                 },
                 error: function(data) { console.log(data); }
               });
             });
           });
-
-        });
 
       },
       error: function(data) { console.log(data); },
