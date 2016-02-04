@@ -83,26 +83,26 @@ soloRouter.get('/player2', jwtAuth, jsonParser, (req, res) => {
 });
 
 soloRouter.get('/', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/public/index.html');
+  var index = fs.createReadStream(__dirname + '/../public/index.html');
   index.pipe(res);
 });
 
 soloRouter.get('/index', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/public/index.html');
+  var index = fs.createReadStream(__dirname + '/../public/index.html');
   index.pipe(res);
 });
 
 soloRouter.get('/home', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/public/index.html');
+  var index = fs.createReadStream(__dirname + '/../public/index.html');
   index.pipe(res);
 });
 
 soloRouter.get('/profiles', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/public/profile.html');
+  var index = fs.createReadStream(__dirname + '/../public/profile.html');
   index.pipe(res);
 });
 
 soloRouter.get('/chordsInKey', (req, res) => {
-  var index = fs.createReadStream(__dirname + '/public/chordsInKey.html');
+  var index = fs.createReadStream(__dirname + '/../public/chordsInKey.html');
   index.pipe(res);
 });
