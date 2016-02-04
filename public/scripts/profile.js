@@ -40,9 +40,7 @@ $(() => {
           document.getElementById('load').disabled = false; 
           // console.log(selected);
         });
-
-
-
+        
         $('#load').click(function(){
           //player js
           var audio;
