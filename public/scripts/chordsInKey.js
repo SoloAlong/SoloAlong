@@ -41,9 +41,13 @@ $(function() {
   $('#orientation').change(dropChange);
   dropChange();
 
-  $('#chords').click(function(e) {
+  $('#chords, #cp').click(function(e) {
     var targetString = $(e.target);
     targetString = targetString[0].id;
+
+    if (targetString.indexOf(' ') < 0) {
+      return;
+    }
     targetString = targetString.replace(' ', '_');
     targetString = '/img/sound/' + targetString + '.mp3';
     if (playing) {
