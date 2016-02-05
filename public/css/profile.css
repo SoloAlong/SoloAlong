@@ -91,3 +91,7 @@ body {
   text-align: center;
   font-size: 1.5em;
 }
+.drag {
+  -webkit-filter: invert(100%) drop-shadow(5px 5px 2px #222); 
+  filter: invert(100%) drop-shadow(5px 5px 2px #222);
+}
